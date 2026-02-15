@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="/src/img/favicon.png" sizes="32x32">
+        <title>MFT Web Viewer</title>
+        
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+        <!--script src="https://unpkg.com/vue@3/dist/vue.global.js"></script-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+
+    </head>
+    <body class="bg-gray-100 text-gray-800">
+
+        <div id="app" class="container mx-auto p-8">
+            <header-component :title="title" @open-help="showHelpModal = true"></header-component>
+            <help-modal :isshow="showHelpModal" @close-modal="showHelpModal = false"></help-modal>
+        </div>
+
+        <script type="module" src="src/app.js"></script>
+    </body>
+</html>
