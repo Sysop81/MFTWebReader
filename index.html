@@ -17,6 +17,7 @@
         <div id="app" class="container mx-auto p-8">
             <header-component :title="title" @open-help="showHelpModal = true"></header-component>
             <help-modal :isshow="showHelpModal" @close-modal="showHelpModal = false"></help-modal>
+            <csv-loader title="Select the CSV File to view" @mft-data="getMFTData" @is-loading="isShowTable = $event"></csv-loader>
         </div>
 
         <script type="module" src="src/app.js"></script>
