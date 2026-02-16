@@ -39,3 +39,33 @@ export const vDraggable = {
         };
     }    
 };
+
+const CSV_REQUIRED_COLUMNS = [
+  "entry_number",
+  "sequence_number",
+  "mft_reference",
+  "parent_mft_reference",
+  "name_type",
+  "file_name_short",
+  "file_name_large",
+  "path",
+  "IsDirectory",
+  "IsHidden",
+  "IsSystem",
+  "IsReadOnly",
+  "ContainsADS",
+  "ADSFiles",
+  "0x10Creation",
+  "0x10Modification",
+  "0x10MFTModification",
+  "0x10Access",
+  "0x30Creation",
+  "0x30Modification",
+  "0x30MFTModification",
+  "0x30Access"
+]
+
+export function validateCSVCols(currentCols){
+    if(currentCols.length !== CSV_REQUIRED_COLUMNS.length) return false;
+    return CSV_REQUIRED_COLUMNS.every(col => currentCols.includes(col));
+}

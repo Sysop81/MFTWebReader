@@ -1,28 +1,49 @@
+import { validateCSVCols } from "../utils/tools.JS";
+
 export default {
     props: ['title'],
     emits: ['mft-data','is-loading'],
-    setup(props, { emit }) {
-        const handleFile = (event) => {
+    methods:{
+        handleFile(event){
             const archivo = event.target.files[0];
             if (!archivo) return;
             
-            emit('is-loading', true);
+            this.$emit('is-loading', true);
             Papa.parse(archivo, {
                 header: true,
                 worker: true,
                 skipEmptyLines: true,
                 complete: (results) => {
-                    // Send data to parent
-                    emit('mft-data', results.data);
+                    try{
+                        const isValid = validateCSVCols(Object.keys(results.data[0]))
+                        if(!isValid){
+                            throw new Error("INVALID_CSV");
+                        }    
+
+                        // Send data to parent
+                        this.$emit('mft-data',{
+                            data: results.data,
+                            error : null
+                        });
+
+                    }catch(e){
+                        this.$emit('mft-data',{
+                            data : [],
+                            error : true,
+                            msg : 'Invalid CSV. Please verify that your CSV file was created with the appropriate tool.'
+                        });
+                    }
                 },
                 error: (e) =>{
                     console.error("Error: ", e)
-                    // [TODO] Adding info to show the user
+                    this.$emit('mft-data',{
+                        data : [],
+                        error : true,
+                        msg : 'Parsing error. Please verify that your CSV file was created with the appropriate tool.'
+                    })
                 }
             });
-        };
-
-        return { handleFile };
+        }
     },
     template: `
         <div class="p-2 mt-2 bg-gradient-to-r from-slate-700 to-slate-800 border-gray-300 rounded-lg">
