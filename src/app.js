@@ -3,6 +3,7 @@ import Header from "./components/Header.js";
 import Error from "./components/modals/Error.js"
 import Help from "./components/modals/Help.js";
 import CSVLoader from "./components/CSVLoader.js";
+import MFTTable from "./components/MFTTable.js";
 
 createApp({
     components:{
@@ -10,6 +11,7 @@ createApp({
         'help-modal' : Help,
         'error-modal': Error,
         'csv-loader' : CSVLoader,
+        'mft-table'  : MFTTable
     },
     data(){
         return{
@@ -29,17 +31,20 @@ createApp({
         },
         getMFTData(data){
             if(data.error){
-                //this.showErrorModal(data.msg);
                 this.showErrorModal = true;
                 this.errorMSG = data.msg;
                 return;
             } 
-            console.log("ROWS:", data.length);
-            this.mftData = Object.freeze(data);
+            console.log("ROWS:", data.data.length);
+            this.mftData = Object.freeze(data.data);
             this.filteredMftData = this.mftData;
         }
     },
     computed:{
-        // TODO
+        limitedData(){
+            const start = 0; 
+            const end = 30;
+            return this.filteredMftData.slice(start, end);
+        }
     }
 }).mount('#app');

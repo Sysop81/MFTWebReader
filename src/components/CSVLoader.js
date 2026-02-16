@@ -27,6 +27,7 @@ export default {
                         });
 
                     }catch(e){
+                        this.$emit('is-loading', false);
                         this.$emit('mft-data',{
                             data : [],
                             error : true,
