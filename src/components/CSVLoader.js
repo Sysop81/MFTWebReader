@@ -27,12 +27,14 @@ export default {
                         });
 
                     }catch(e){
-                        this.$emit('is-loading', false);
+                        
                         this.$emit('mft-data',{
                             data : [],
                             error : true,
                             msg : 'Invalid CSV. Please verify that your CSV file was created with the appropriate tool.'
                         });
+                    }finally{
+                        this.$emit('is-loading', false);
                     }
                 },
                 error: (e) =>{

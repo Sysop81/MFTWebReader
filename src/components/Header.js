@@ -8,7 +8,9 @@ export default {
                 <span class="font-bold">Author.</span> José Ramón López
             </p>
             <p class="pl-2 text-xs text-slate-400">
-                <span class="font-bold">Github.</span> github.com/Sysop81
+            
+                <span class="font-bold">Github.</span>
+                <a href="https://github.com/Sysop81" target="_blank" class="text-slate-200 underline-offset-4 hover:underline"> github.com/Sysop81</a>
             </p>
             <p class="pl-2 text-xs text-slate-400">
                 <span class="font-bold">

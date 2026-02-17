@@ -18,8 +18,18 @@
             <header-component :title="title" @open-help="showHelpModal = true"></header-component>
             <error-modal :isshow="showErrorModal" :msg="errorMSG" @close-modal="handleErrorModal(false)"></error-modal>
             <help-modal :isshow="showHelpModal" @close-modal="showHelpModal = false"></help-modal>
-            <csv-loader title="Select the CSV File to view" @mft-data="getMFTData" @is-loading="isShowTable = $event"></csv-loader>
-            <mft-table v-if="isShowTable" :rows="limitedData" @show-details="openMFTRow($event)"></mft-table>
+            <csv-loader title="Select the CSV File to view" @mft-data="getMFTData" @is-loading="isLoading = $event"></csv-loader>
+            <data-loader :is-loading="isLoading"></data-loader>
+            <div v-if="!isLoading & isShowTable">
+                <mft-table :rows="limitedData" @show-details="openMFTRow($event)"></mft-table>
+                <pager-component
+                    :pmpager="{ text: String(rowsPerPage), value: rowsPerPage }"
+                    :papage="currentPage"
+                    :ptpages="totalPages"
+                    :ptelements="filteredMftData.length"
+                    @paginated="handlePagination">
+                </pager-component>
+            </div>
         </div>
 
         <script type="module" src="src/app.js"></script>
