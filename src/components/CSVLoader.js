@@ -1,4 +1,4 @@
-import { validateCSVCols } from "../utils/tools.JS";
+import { validateCSVCols } from "../utils/tools.js";
 
 export default {
     props: ['title'],
@@ -49,7 +49,7 @@ export default {
         }
     },
     template: `
-        <div class="p-2 mt-2 bg-gradient-to-r from-slate-700 to-slate-800 border-gray-300 rounded-lg">
+        <div class="p-2 mt-2 bg-gradient-to-r from-slate-700 to-slate-800 border-gray-300 rounded">
             <h3 class="text-lg font-bold text-slate-50 mb-4">{{ title }}</h3>
             <input type="file" @change="handleFile" accept=".csv" 
                    class="block w-full text-sm text-slate-50 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-slate-900 hover:file:bg-blue-100 cursor-pointer"/>

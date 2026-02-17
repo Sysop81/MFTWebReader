@@ -18,6 +18,7 @@
             <header-component :title="title" @open-help="showHelpModal = true"></header-component>
             <error-modal :isshow="showErrorModal" :msg="errorMSG" @close-modal="handleErrorModal(false)"></error-modal>
             <help-modal :isshow="showHelpModal" @close-modal="showHelpModal = false"></help-modal>
+            <mft-detail-modal :mftrow="selectedRow" :isshow="showDetailModal" @close-modal="closeMFTDetail"></mft-detail-modal>
             <csv-loader title="Select the CSV File to view" @mft-data="getMFTData" @is-loading="isLoading = $event"></csv-loader>
             <data-loader :is-loading="isLoading"></data-loader>
             <div v-if="!isLoading & isShowTable">

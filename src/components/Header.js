@@ -17,7 +17,7 @@ export default {
                     Description.
                 </span> 
                 Web tool to display the content of some MFT attributes contained in the CSV output file created with MFTParser.
-                <span class="font-bold text-slate-50 cursor-pointer" @click="$emit('open-help')">
+                <span class="text-slate-50 cursor-pointer underline-offset-4 hover:underline" @click="$emit('open-help')">
                 Click here to show some help    
                 </span>
             </p>

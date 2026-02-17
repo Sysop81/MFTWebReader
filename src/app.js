@@ -4,6 +4,7 @@ import Error from "./components/modals/Error.js"
 import Help from "./components/modals/Help.js";
 import Loader from "./components/Loader.js";
 import CSVLoader from "./components/CSVLoader.js";
+import MFTDetail from "./components/modals/MFTDetail.js";
 import MFTTable from "./components/MFTTable.js";
 import Pager from "./components/Pager.js"
 
@@ -15,6 +16,7 @@ createApp({
         'data-loader': Loader,
         'csv-loader' : CSVLoader,
         'mft-table'  : MFTTable,
+        'mft-detail-modal':MFTDetail,
         'pager-component': Pager
     },
     data(){
@@ -30,13 +32,22 @@ createApp({
             pagerObj: { text: '30', value: 30 },
             showHelpModal : false,
             showErrorModal: false,
-            errorMSG: ''
+            errorMSG: '',
+            showDetailModal : false
         }
     },
     methods: {
         handleErrorModal(data){
             this.showErrorModal = data;
             this.errorMSG = '';
+        },
+        openMFTRow(data){
+            this.selectedRow = data;
+            this.showDetailModal = true;
+        },
+        closeMFTDetail(data){
+            this.showDetailModal = data;
+            this.selectedRow = null;
         },
         getMFTData(data){
             if(data.error){
