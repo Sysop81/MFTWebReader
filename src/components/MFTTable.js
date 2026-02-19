@@ -1,8 +1,22 @@
+const SCORE_MAP = [
+  { limit: 90, class: 'bg-red-600 text-white ' },
+  { limit: 70, class: 'bg-orange-500 text-white' },
+  { limit: 60, class: 'bg-yellow-400 text-black' },
+  { limit: 0,  class: 'bg-emerald-100 text-emerald-800' }
+];
+
 export default {
     props: {
         rows: {
             type: Array,
             default: () => []
+        }
+    },
+    methods: {
+        getStompingScoreClass(score){
+            console.log("score: " + score);
+            const classes = SCORE_MAP.find(item => score >= item.limit) 
+            return classes.class;
         }
     },
     emits:['show-details'],
@@ -39,6 +53,9 @@ export default {
                             </span>
                             <span v-if="row.IsHidden == 'True'" class="mr-1 bg-blue-100 text-blue-700 font-bold text-[10px] px-2 py-1 rounded-full uppercase tracking-tighter font-mono">Hidden</span>
                             <span v-if="row.ContainsADS == 'True'" class="bg-green-100 text-green-700 font-bold text-[10px] px-2 py-1 rounded-full uppercase tracking-tighter font-mono">ADS</span>
+                            <span class="font-bold text-[10px] px-2 py-1 rounded-full uppercase tracking-tighter font-mono"
+                                 :class="getStompingScoreClass(row.timestomping_analysis.score)"
+                            >TSTOMPING {{ Number(row.timestomping_analysis.score).toFixed(0) }}%</span>
                         </td>
 
                         <td class="px-4 py-2 text-center">

@@ -3,6 +3,7 @@ import Header from "./components/Header.js";
 import Error from "./components/modals/Error.js"
 import Help from "./components/modals/Help.js";
 import Loader from "./components/Loader.js";
+import MFTSearch from "./components/MFTSearch.js";
 import CSVLoader from "./components/CSVLoader.js";
 import MFTDetail from "./components/modals/MFTDetail.js";
 import MFTTable from "./components/MFTTable.js";
@@ -15,6 +16,7 @@ createApp({
         'error-modal': Error,
         'data-loader': Loader,
         'csv-loader' : CSVLoader,
+        'mft-search' : MFTSearch,
         'mft-table'  : MFTTable,
         'mft-detail-modal':MFTDetail,
         'pager-component': Pager
@@ -66,6 +68,10 @@ createApp({
             this.pagerObj = { text: String(data.rowsPerPage), value: data.rowsPerPage };
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        },
+        handleFilter(data){
+            this.filteredMftData = data;
+            this.currentPage = 1;
         }
     },
     computed:{

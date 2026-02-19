@@ -18,11 +18,17 @@ export default {
                         const isValid = validateCSVCols(Object.keys(results.data[0]))
                         if(!isValid){
                             throw new Error("INVALID_CSV");
-                        }    
+                        }
+                        
+                        // Parsing timestomping analysis
+                        const transformData = results.data.map(record =>{
+                            record.timestomping_analysis = JSON.parse(record.timestomping_analysis);
+                            return record
+                        });
 
                         // Send data to parent
                         this.$emit('mft-data',{
-                            data: results.data,
+                            data: transformData,
                             error : null
                         });
 
