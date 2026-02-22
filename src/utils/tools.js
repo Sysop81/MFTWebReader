@@ -1,3 +1,10 @@
+export const SEARCH_MODULE_CONFIG = {
+    FILTER_START : 0,
+    FILTER_END : 50,
+    WORKER_URI : '../src/workers/filter-worker.js',
+    INPUT_TIME_OUT : 300
+}
+
 export const vDraggable = {
     mounted(el){
         if(!el) return
@@ -62,8 +69,9 @@ const CSV_REQUIRED_COLUMNS = [
   "0x30Creation",
   "0x30Modification",
   "0x30MFTModification",
-  "0x30Access"
-]
+  "0x30Access",
+  "timestomping_analysis"
+];
 
 export function validateCSVCols(currentCols){
     if(currentCols.length !== CSV_REQUIRED_COLUMNS.length) return false;

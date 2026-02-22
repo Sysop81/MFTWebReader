@@ -14,14 +14,13 @@ export default {
     },
     methods: {
         getStompingScoreClass(score){
-            console.log("score: " + score);
             const classes = SCORE_MAP.find(item => score >= item.limit) 
             return classes.class;
         }
     },
     emits:['show-details'],
     template: `
-        <div v-if="rows.length > 0" class="mt-4 h-[50vh] overflow-x-auto overflow-y-auto shadow-sm border border-gray-200 rounded-lg">
+        <div class="mt-4 h-[50vh] overflow-x-auto overflow-y-auto shadow-sm border border-gray-200 rounded-lg">
             <table class="min-w-full divide-y divide-gray-200 table-fixed">
                 <thead class="bg-gray-50 sticky top-0 z-10 shadow-sm">
                     <tr>
@@ -31,7 +30,12 @@ export default {
                         <th class="w-[5%] px-4 py-3 text-center text-xs font-bold text-white uppercase tracking-wider bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800">Show</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200 font-mono text-sm">
+                <tbody v-if="rows.length == 0" class="bg-white divide-y divide-gray-200 font-mono text-sm">
+                    <tr>
+                        <td colspan="4" class="text-gray-500 align-middle text-center py-2">No data</td>
+                    </tr>
+                </tbody>
+                <tbody v-else class="bg-white divide-y divide-gray-200 font-mono text-sm">
                     <tr v-for="(row, index) in rows" :key="index" class="hover:bg-gray-50">
                         <!-- File name -->
                         <td class="px-4 py-2 max-w-0">
