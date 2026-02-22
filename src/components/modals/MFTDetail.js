@@ -129,6 +129,73 @@ export default {
                             </tbody>
                         </table>
                     </div>
+                    
+                    <!-- TStomping -->
+                    <h4 class="text-xs font-bold text-slate-600 uppercase mt-2 mb-3 flex items-center">
+                        <span class="mr-2">TIMESTOMPING REPORT</span>
+                        <hr class="flex-grow border-slate-200">
+                    </h4>
+                    <div class="overflow-hidden rounded-lg border border-gray-200 shadow-sm max-w-2xl">
+                        <table class="min-w-full divide-y divide-gray-200 bg-white text-sm">
+                            <tbody class="divide-y divide-gray-100">
+                            <tr>
+                                <th class="whitespace-nowrap px-4 py-3 font-semibold text-gray-900 bg-gray-50 w-1/3 text-left">
+                                Timestomping Score
+                                </th>
+                                <td class="px-4 py-3 text-gray-700">
+                                {{ mftrow.timestomping_analysis.score }} %
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="whitespace-nowrap px-4 py-3 font-semibold text-gray-900 bg-gray-50 text-left">
+                                UTC Zero
+                                </th>
+                                <td :class="[
+                                    'px-4','py-3', 
+                                    !mftrow.timestomping_analysis.rounded_timestamp ? 'text-green-600' : 'text-red-600'
+                                ]">
+                                {{ !mftrow.timestomping_analysis.rounded_timestamp ? 'No detected' : 'Detected' }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="whitespace-nowrap px-4 py-3 font-semibold text-gray-900 bg-gray-50 text-left">
+                                Future Timestamp
+                                </th>
+                                <td :class="[
+                                    'px-4','py-3', 
+                                    !mftrow.timestomping_analysis.future_timestamp ? 'text-green-600' : 'text-red-600'
+                                ]">
+                                {{ !mftrow.timestomping_analysis.future_timestamp ? 'No detected' : 'Detected' }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="whitespace-nowrap px-4 py-3 font-semibold text-gray-900 bg-gray-50 text-left">
+                                Internal Inconsistency
+                                </th>
+                                <td :class="[
+                                    'px-4','py-3', 
+                                    !mftrow.timestomping_analysis.internal_inconsistency ? 'text-green-600' : 'text-red-600'
+                                ]">
+                                {{ !mftrow.timestomping_analysis.internal_inconsistency ? 'No detected' : 'Detected' }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="whitespace-nowrap px-4 py-3 font-semibold text-gray-900 bg-gray-50 text-left">
+                                Mismatch Fields
+                                </th>
+                                <td class="px-4 py-3 text-gray-700">
+                                    <span 
+                                        v-for="(ts, index) in mftrow.timestomping_analysis.mismatch_fields" 
+                                        :key="index"
+                                        class="inline-block bg-slate-100 text-slate-800 text-xs px-2 py-1 rounded-full mr-2">
+                                        {{ ts }}
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- -->
                 </div>
 
                 <div class="px-6 py-4 bg-slate-50 border-t border-slate-200 flex justify-end">
