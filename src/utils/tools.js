@@ -1,7 +1,7 @@
 export const SEARCH_MODULE_CONFIG = {
     FILTER_START : 0,
     FILTER_END : 50,
-    WORKER_URI : '../src/workers/filter-worker.js',
+    WORKER_URI : new URL('../workers/filter-worker.js', import.meta.url).href,
     INPUT_TIME_OUT : 300
 }
 
