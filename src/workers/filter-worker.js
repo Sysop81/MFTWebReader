@@ -34,19 +34,6 @@ self.onmessage = function(e) {
             return (row.file_name_large && row.file_name_large.toLowerCase().includes(q));
         });
 
-        // Handle filter
-        // const filtered = rawData.filter(row => {
-        //     return String(row.ContainsADS).toLowerCase() === isADS.toString() &&
-        //            (isTstomping && row.timestomping_analysis.score > tsValue) && 
-        //            (row.file_name_large && row.file_name_large.toLowerCase().includes(q));
-        // });
-
-        // Search Filter
-        // const filtered = rawData.filter(row => {
-        // return (row.file_name_large && row.file_name_large.toLowerCase().includes(q)) /*|| 
-        //         (row.path && row.path.toLowerCase().includes(q))*/;
-        // });
-
         self.postMessage(filtered);
     }
 };
