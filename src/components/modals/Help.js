@@ -61,12 +61,33 @@ export default {
                                 <strong>Note:</strong> Clearing the search input will reset the table to its original state.
                             </p>
                         </div>
+                        <img src="src/img/help/filters_checks.jpg" alt="Filters checks example">
+                        <p>
+                            As you can see in the image, the tool has checkboxes that allow you to further filter the
+                            content.
+                        </p>
+                        <ul class="p-2">
+                            <li><strong>ADS Streams.</strong>It allows filtering all MFT records that contain alternative data streams.</li>
+                            <li><strong>Timestomping.</strong>It allows filtering all files that contain inconsistencies between the standard information timestamps and the file name timestamps.</li>
+                            <li><strong>Timestomping slider.</strong>It allows you to filter the levels of timestomping in the files. It is measured as a percentage.</li>
+                        </ul>
                     </div>
 
                     <h4 class="text-xs font-bold text-slate-600 uppercase mb-3 flex items-center">
                         <span class="mr-2">Step 4. Show MFT record details</span>
                         <hr class="flex-grow border-slate-200">
                     </h4>
+                     <div class="mb-6 p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
+                        <p>
+                            To view the details of a record, simply click on the eye icon.
+                        </p>
+                        <img src="src/img/help/eye_btn.jpg" class="border rounded-sm p-1" alt="eye btn to show record details">
+                        <p class="mt-1">
+                            Once the button is pressed, a modal window will open displaying all the attributes
+                             of the selected record.
+                        </p>
+                        <img src="src/img/help/m_details.jpg" alt="modal record details">
+                    </div>    
 
                 </div>    
 
